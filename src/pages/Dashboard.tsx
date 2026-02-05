@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/balanceiq/Header";
 import { TabBar, TabId } from "@/components/balanceiq/TabBar";
 import { ScoreCard } from "@/components/balanceiq/ScoreCard";
@@ -16,8 +17,17 @@ const mockBills = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>("home");
   const [isScoreModalOpen, setIsScoreModalOpen] = useState(false);
+
+  const handleTabChange = (tab: TabId) => {
+    setActiveTab(tab);
+    if (tab === "bills") navigate("/bills");
+    if (tab === "savings") navigate("/savings");
+    if (tab === "advisor") navigate("/advisor");
+    if (tab === "more") navigate("/settings");
+  };
 
   const score = 68;
   const safeToSpend = 1247;
@@ -61,7 +71,10 @@ export default function Dashboard() {
                 />
               ))}
             </div>
-            <button className="mt-4 flex items-center gap-1 text-body-sm font-medium text-primary hover:text-primary-dark transition-colors">
+            <button
+              onClick={() => navigate("/bills")}
+              className="mt-4 flex items-center gap-1 text-body-sm font-medium text-primary hover:text-primary-dark transition-colors"
+            >
               View all
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -71,13 +84,13 @@ export default function Dashboard() {
           <SmartTipCard
             tip="You could save $120/month by cutting your unused streaming subscriptions."
             action="See suggestion"
-            onClick={() => {}}
+            onClick={() => navigate("/advisor")}
           />
         </div>
       </main>
 
       {/* Tab Bar */}
-      <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
+      <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
 
       {/* Score Breakdown Modal */}
       <ScoreBreakdownModal
