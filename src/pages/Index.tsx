@@ -125,7 +125,7 @@ export default function Index() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/onboarding")}
           className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 text-body font-semibold text-primary-foreground shadow-lg hover:bg-primary-dark active:scale-[0.98] transition-all"
         >
           Get Started
