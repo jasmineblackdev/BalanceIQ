@@ -3,7 +3,9 @@ import { Header } from "@/components/balanceiq/Header";
 import { TabBar, TabId } from "@/components/balanceiq/TabBar";
 import { BillCard } from "@/components/balanceiq/BillCard";
 import { EmptyBillsCard } from "@/components/balanceiq/EmptyBillsCard";
-import { Plus, Filter, Camera, FileText } from "lucide-react";
+import { AddBillModal } from "@/components/balanceiq/AddBillModal";
+import { FilterModal, BillFilter } from "@/components/balanceiq/FilterModal";
+import { Plus, Filter } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const mockBills = [
@@ -19,6 +21,9 @@ export default function Bills() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>("bills");
   const [showAddModal, setShowAddModal] = useState(false);
+  const [addMode, setAddMode] = useState<"choose" | "manual" | "scan">("choose");
+  const [showFilterModal, setShowFilterModal] = useState(false);
+  const [filters, setFilters] = useState<BillFilter>({ status: [], category: [], sortBy: "date" });
 
   const handleTabChange = (tab: TabId) => {
     setActiveTab(tab);
@@ -28,8 +33,28 @@ export default function Bills() {
     if (tab === "more") navigate("/settings");
   };
 
+  const openAdd = (mode: "choose" | "manual" | "scan") => {
+    setAddMode(mode);
+    setShowAddModal(true);
+  };
+
+  // Apply filters
+  let filteredBills = [...mockBills];
+  if (filters.status.length > 0) {
+    filteredBills = filteredBills.filter((b) => filters.status.includes(b.status));
+  }
+  if (filters.category.length > 0) {
+    filteredBills = filteredBills.filter((b) => filters.category.includes(b.category));
+  }
+  filteredBills.sort((a, b) => {
+    if (filters.sortBy === "amount") return b.amount - a.amount;
+    if (filters.sortBy === "name") return a.name.localeCompare(b.name);
+    return 0; // date - keep original order
+  });
+
   const totalDue = mockBills.reduce((sum, bill) => sum + bill.amount, 0);
   const upcomingCount = mockBills.length;
+  const activeFilterCount = filters.status.length + filters.category.length + (filters.sortBy !== "date" ? 1 : 0);
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,7 +63,7 @@ export default function Bills() {
         variant="standard"
         rightAction={
           <button
-            onClick={() => setShowAddModal(true)}
+            onClick={() => openAdd("choose")}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary-dark transition-colors"
           >
             <Plus className="h-5 w-5" />
@@ -66,34 +91,40 @@ export default function Bills() {
         {/* Quick Add Options */}
         <div className="flex gap-3 mb-6">
           <button
-            onClick={() => setShowAddModal(true)}
+            onClick={() => openAdd("scan")}
             className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-dashed border-primary/30 bg-accent py-4 text-body-sm font-medium text-primary hover:border-primary hover:bg-accent/80 transition-colors"
           >
-            <Camera className="h-5 w-5" />
-            Scan Bill
+            📸 Scan Bill
           </button>
           <button
-            onClick={() => setShowAddModal(true)}
+            onClick={() => openAdd("manual")}
             className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-dashed border-primary/30 bg-accent py-4 text-body-sm font-medium text-primary hover:border-primary hover:bg-accent/80 transition-colors"
           >
-            <FileText className="h-5 w-5" />
-            Add Manually
+            📝 Add Manually
           </button>
         </div>
 
         {/* Filter */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-h2 text-foreground">All Bills</h2>
-          <button className="flex items-center gap-1 text-body-sm text-muted-foreground hover:text-foreground transition-colors">
+          <button
+            onClick={() => setShowFilterModal(true)}
+            className="flex items-center gap-1 text-body-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             <Filter className="h-4 w-4" />
             Filter
+            {activeFilterCount > 0 && (
+              <span className="ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-caption text-primary-foreground">
+                {activeFilterCount}
+              </span>
+            )}
           </button>
         </div>
 
         {/* Bills List */}
-        {mockBills.length > 0 ? (
+        {filteredBills.length > 0 ? (
           <div className="space-y-2">
-            {mockBills.map((bill) => (
+            {filteredBills.map((bill) => (
               <BillCard
                 key={bill.id}
                 name={bill.name}
@@ -106,10 +137,12 @@ export default function Bills() {
             ))}
           </div>
         ) : (
-          <EmptyBillsCard onAddBill={() => setShowAddModal(true)} />
+          <EmptyBillsCard onAddBill={() => openAdd("choose")} />
         )}
       </main>
 
+      <AddBillModal open={showAddModal} onClose={() => setShowAddModal(false)} mode={addMode} />
+      <FilterModal open={showFilterModal} onClose={() => setShowFilterModal(false)} filters={filters} onApply={setFilters} />
       <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
     </div>
   );

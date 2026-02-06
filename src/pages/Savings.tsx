@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "@/components/balanceiq/Header";
 import { TabBar, TabId } from "@/components/balanceiq/TabBar";
 import { ProgressBar } from "@/components/ui/progress-bar";
+import { AddGoalModal } from "@/components/balanceiq/AddGoalModal";
 import { Plus, Target, TrendingUp, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -56,6 +57,7 @@ function GoalCard({ goal }: { goal: SavingsGoal }) {
 export default function Savings() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>("savings");
+  const [showAddGoal, setShowAddGoal] = useState(false);
 
   const handleTabChange = (tab: TabId) => {
     setActiveTab(tab);
@@ -74,7 +76,10 @@ export default function Savings() {
         title="Savings"
         variant="standard"
         rightAction={
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary-dark transition-colors">
+          <button
+            onClick={() => setShowAddGoal(true)}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary-dark transition-colors"
+          >
             <Plus className="h-5 w-5" />
           </button>
         }
@@ -137,12 +142,16 @@ export default function Savings() {
         </div>
 
         {/* Add Goal Button */}
-        <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-primary/30 bg-accent py-4 text-body font-medium text-primary hover:border-primary hover:bg-accent/80 transition-colors">
+        <button
+          onClick={() => setShowAddGoal(true)}
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-primary/30 bg-accent py-4 text-body font-medium text-primary hover:border-primary hover:bg-accent/80 transition-colors"
+        >
           <Plus className="h-5 w-5" />
           Create New Goal
         </button>
       </main>
 
+      <AddGoalModal open={showAddGoal} onClose={() => setShowAddGoal(false)} />
       <TabBar activeTab={activeTab} onTabChange={handleTabChange} />
     </div>
   );

@@ -23,6 +23,7 @@ interface SettingsItem {
   badge?: string;
   action?: "navigate" | "toggle";
   value?: boolean;
+  route?: string;
 }
 
 interface SettingsSection {
@@ -34,29 +35,29 @@ const settingsSections: SettingsSection[] = [
   {
     title: "Account",
     items: [
-      { id: "profile", icon: <User className="h-5 w-5" />, label: "Profile", description: "John Doe", action: "navigate" },
-      { id: "subscription", icon: <CreditCard className="h-5 w-5" />, label: "Subscription", badge: "Pro", action: "navigate" },
-      { id: "linked-accounts", icon: <Smartphone className="h-5 w-5" />, label: "Linked Accounts", description: "3 connected", action: "navigate" },
+      { id: "profile", icon: <User className="h-5 w-5" />, label: "Profile", description: "John Doe", action: "navigate", route: "/settings/profile" },
+      { id: "subscription", icon: <CreditCard className="h-5 w-5" />, label: "Subscription", badge: "Pro", action: "navigate", route: "/settings/subscription" },
+      { id: "linked-accounts", icon: <Smartphone className="h-5 w-5" />, label: "Linked Accounts", description: "3 connected", action: "navigate", route: "/settings/linked-accounts" },
     ],
   },
   {
     title: "Preferences",
     items: [
-      { id: "notifications", icon: <Bell className="h-5 w-5" />, label: "Notifications", action: "navigate" },
+      { id: "notifications", icon: <Bell className="h-5 w-5" />, label: "Notifications", action: "navigate", route: "/settings/notifications" },
       { id: "dark-mode", icon: <Moon className="h-5 w-5" />, label: "Dark Mode", action: "toggle", value: false },
     ],
   },
   {
     title: "Security",
     items: [
-      { id: "security", icon: <Shield className="h-5 w-5" />, label: "Security & Privacy", action: "navigate" },
+      { id: "security", icon: <Shield className="h-5 w-5" />, label: "Security & Privacy", action: "navigate", route: "/settings/security" },
     ],
   },
   {
     title: "Support",
     items: [
-      { id: "help", icon: <HelpCircle className="h-5 w-5" />, label: "Help & Support", action: "navigate" },
-      { id: "terms", icon: <FileText className="h-5 w-5" />, label: "Terms & Privacy", action: "navigate" },
+      { id: "help", icon: <HelpCircle className="h-5 w-5" />, label: "Help & Support", action: "navigate", route: "/settings/help" },
+      { id: "terms", icon: <FileText className="h-5 w-5" />, label: "Terms & Privacy", action: "navigate", route: "/settings/terms" },
     ],
   },
 ];
@@ -80,13 +81,24 @@ export default function Settings() {
     setToggleStates((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const handleItemClick = (item: SettingsItem) => {
+    if (item.action === "toggle") {
+      handleToggle(item.id);
+    } else if (item.route) {
+      navigate(item.route);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header title="Settings" variant="standard" />
 
       <main className="px-5 pt-[calc(theme(spacing.safe-top)+theme(spacing.14)+0.5rem)] pb-[calc(theme(spacing.20)+theme(spacing.safe-bottom)+theme(spacing.4))]">
         {/* Profile Card */}
-        <div className="rounded-xl bg-card p-5 shadow-card mb-6">
+        <div
+          onClick={() => navigate("/settings/profile")}
+          className="rounded-xl bg-card p-5 shadow-card mb-6 cursor-pointer card-interactive"
+        >
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-h1 text-primary-foreground">
               JD
@@ -111,11 +123,7 @@ export default function Settings() {
               {section.items.map((item, index) => (
                 <button
                   key={item.id}
-                  onClick={() => {
-                    if (item.action === "toggle") {
-                      handleToggle(item.id);
-                    }
-                  }}
+                  onClick={() => handleItemClick(item)}
                   className={`flex w-full items-center gap-4 px-4 py-4 hover:bg-muted/50 transition-colors ${
                     index < section.items.length - 1 ? "border-b border-border" : ""
                   }`}
