@@ -1,73 +1,167 @@
-# Welcome to your Lovable project
+#  BalanceIQ
+### Smart Money. Less Stress.
 
-## Project info
+BalanceIQ is a **privacy-first financial planning mobile application** designed to help users budget smarter, manage bills, build savings, and make informed financial decisions — all without the pressure or complexity of traditional banking tools.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Think of BalanceIQ as a **personal financial advisor in your pocket**, built with modern fintech principles, AI-powered insights, and a calm, user-first experience.
+<img width="1024" height="1024" alt="187df339-fcbd-4b01-8ff4-faf73e2fc012" src="https://github.com/user-attachments/assets/534ccf72-8318-4d92-8148-94f6fdc310ef" />
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+##  Overview
 
-**Use Lovable**
+Many people feel overwhelmed managing their finances due to:
+- Irregular pay schedules
+- Rising bills and subscriptions
+- Unclear savings strategies
+- Intimidating investing platforms
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+**BalanceIQ simplifies financial decision-making** by focusing on clarity, control, and confidence — not shame, pressure, or risky advice.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+##  Key Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 💳 Budget & Paycheck Planning
+- Supports weekly, bi-weekly, and monthly income
+- Automatically assigns bills to pay periods
+- Shows “safe-to-spend” money after obligations
+- Clear paycheck breakdowns
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+###  Bill Intelligence (Privacy-First)
+- Upload bills via image or PDF
+- AI reads amounts, due dates, and categories
+- Flags:
+  - Forgotten subscriptions
+  - Rising or duplicate bills
+  - Opportunities to cut expenses
+- **No bank logins**
+- **No financial credentials stored**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+###  Smart Savings Engine
+- Emergency fund planning
+- Goal-based savings (travel, debt, big purchases)
+- Automatically adjusts recommendations when income changes
+- Visual progress tracking
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+###  Investing Guidance (Educational)
+- Beginner-friendly investing insights
+- Risk profile assessment
+- Long-term portfolio examples
+- No trading hype or guarantees
 
-**Edit a file directly in GitHub**
+> ⚠️ BalanceIQ provides **educational financial guidance only** and does not manage funds or execute trades.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+###  AI Financial Advisor
+- Chat-based assistant for questions like:
+  - “Can I afford this?”
+  - “How can I save $10k this year?”
+  - “Which bills should I cut?”
+- Supportive, non-judgmental tone
+- Plain-language explanations
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+##  User Experience Goals
+- Reduce financial anxiety
+- Encourage consistent habits
+- Avoid overwhelming dashboards
+- Provide clarity in under 5 minutes
 
-This project is built with:
+> Design philosophy: **Apple-level simplicity meets fintech intelligence**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+##  Design System
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+**Brand Colors**
+- Navy Blue `#0B1C2D`
+- Emerald Teal `#1EC8A5`
+- Soft Mint `#7EE0C7`
+- Off-White `#F7F9FC`
+- Charcoal `#1E1E1E`
 
-## Can I connect a custom domain to my Lovable project?
+**Typography**
+- Primary: Inter
+- Headings: SF Pro / Poppins
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🛠️ Tech Stack (Planned)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Frontend:** React Native or Flutter
+- **Backend:** Firebase / Supabase
+- **AI:** OpenAI (financial insights & bill parsing)
+- **Authentication:** Email + biometrics
+- **Storage:** Encrypted cloud storage
+
+---
+
+##  Screens (Planned)
+- Onboarding
+- Home Dashboard
+- Bills & Subscriptions
+- Savings Goals
+- AI Advisor Chat
+- Profile & Settings
+
+---
+
+##  Monetization Strategy
+
+**Free Tier**
+- Budgeting
+- Bill insights
+- Savings goals
+
+**Premium (Planned)**
+- Unlimited AI advisor access
+- Advanced insights
+- Investment education tools
+- Exportable financial reports
+
+---
+
+##  Legal Disclaimer
+BalanceIQ does **not** provide licensed financial, tax, or investment advice.  
+All insights are for educational and planning purposes only.
+
+---
+
+##  Project Status
+🚧 **In active design & planning**
+
+This project is being developed as:
+- A real-world fintech product concept
+- A portfolio-grade case study
+- A foundation for future MVP development
+
+---
+
+##  Contributions
+This is currently a solo project.  
+Feedback, suggestions, and discussions are welcome.
+
+---
+
+##  Author
+**Jasmine Black**  
+Designer • Software Engineering Student • Fintech Builder
+
+---
+
+##  License
+MIT License (to be finalized)
+
+---
+
+##  Preview
+https://balanceiq-score-master.lovable.app
