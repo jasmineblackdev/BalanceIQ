@@ -15,6 +15,7 @@ import LinkedAccounts from "./pages/LinkedAccounts";
 import Notifications from "./pages/Notifications";
 import Security from "./pages/Security";
 import HelpSupport from "./pages/HelpSupport";
+import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/bills" element={<Bills />} />
           <Route path="/savings" element={<Savings />} />
