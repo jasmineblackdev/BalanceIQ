@@ -71,7 +71,7 @@ export default function Index() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-3 text-body text-primary-foreground/80 max-w-[280px]"
             >
-              Know exactly how much you can spend, stress-free
+              Know exactly what you can spend — no stress, no jargon, just clarity
             </motion.p>
 
             {/* Score Preview */}
@@ -137,7 +137,7 @@ export default function Index() {
           transition={{ duration: 0.5, delay: 0.9 }}
           className="mt-4 text-center text-caption text-muted-foreground"
         >
-          Free to use • No credit card required
+          Free forever • No bank login needed • Your data stays yours
         </motion.p>
       </div>
     </div>

@@ -29,7 +29,7 @@ const initialMessages: Message[] = [
   {
     id: 1,
     type: "bot",
-    content: "Hi! I'm your BalanceIQ Advisor. I've analyzed your spending patterns and have some insights to share. What would you like help with today?",
+    content: "Hey there! 👋 I'm your BalanceIQ Advisor. I've been looking at your finances and have some ideas that could help. No pressure — just ask me anything and I'll explain it in plain English.",
     timestamp: "Just now",
   },
 ];
@@ -64,16 +64,16 @@ export default function Advisor() {
     // Simulate bot response
     setTimeout(() => {
       const botResponses: Record<string, string> = {
-        "How can I reduce my monthly spending?": "Based on your spending patterns, I see you're spending $340/month on subscriptions. Here are 3 you might not be using: Netflix ($15), Gym ($45), and Adobe ($20). Canceling these could save you $80/month!",
-        "Help me save more money each month": "Great goal! You currently save 8% of your income. To reach a healthy 15%, try the 50/30/20 rule: 50% needs, 30% wants, 20% savings. I can help you categorize your spending to find opportunities.",
-        "What's the best strategy to pay off my debt?": "You have $2,500 in credit card debt at 19% APR. Using the avalanche method, if you pay $200/month, you'll be debt-free in 14 months and save $180 in interest!",
-        "Give me personalized tips to improve my finances": "Here are 3 quick wins for you:\n1. Your electricity bill went up 15% - consider switching providers\n2. You have $200 extra this paycheck - put it toward your Emergency Fund\n3. Your car insurance renews next month - I found a plan that's $30 cheaper",
+        "How can I reduce my monthly spending?": "Good news — I found some easy wins! 🎉\n\nYou're spending about $340/month on subscriptions. Here are 3 you might not be using much:\n\n• Netflix — $15/mo\n• Gym membership — $45/mo\n• Adobe Creative — $20/mo\n\nCanceling these could save you $80/month. That's almost $1,000 a year back in your pocket!",
+        "Help me save more money each month": "Love that you're thinking about this! 💪\n\nRight now you're saving about 8% of your income — that's already a great start. Here's a simple approach:\n\n• 50% for needs (rent, bills, groceries)\n• 30% for wants (dining, fun stuff)\n• 20% for savings\n\nWant me to help sort your spending into these buckets?",
+        "What's the best strategy to pay off my debt?": "Let's tackle this together! 🙌\n\nYou have $2,500 on your credit card at 19% APR. Here's the plan:\n\n• Pay $200/month\n• You'll be debt-free in 14 months\n• You'll save $180 in interest\n\nThat's totally doable. Want me to set up a reminder for each payment?",
+        "Give me personalized tips to improve my finances": "Here are 3 quick wins just for you! ✨\n\n1. Your electricity bill went up 15% — switching providers could save you $20/mo\n2. You have $200 extra this paycheck — putting it toward your Emergency Fund gets you closer to your goal\n3. Your car insurance renews next month — I found a plan that's $30 cheaper\n\nSmall changes, big impact over time!",
       };
 
       const botMessage: Message = {
         id: messages.length + 2,
         type: "bot",
-        content: botResponses[text] || "I understand you want to improve your finances. Let me analyze your recent transactions and give you personalized advice. What specific area would you like to focus on?",
+        content: botResponses[text] || "Great question! Let me look into that for you. I'll check your recent activity and come back with something helpful. Is there a specific area you'd like to focus on — spending, saving, or bills?",
         timestamp: "Just now",
       };
 

@@ -43,7 +43,7 @@ export function MoneyCard({
             {amount}
           </p>
           {subtitle && (
-            <p className="mt-1 text-caption text-caption">{subtitle}</p>
+            <p className="mt-1 text-caption text-muted-foreground">{subtitle}</p>
           )}
         </div>
         {icon && (
