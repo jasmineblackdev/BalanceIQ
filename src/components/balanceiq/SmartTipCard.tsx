@@ -24,11 +24,11 @@ export function SmartTipCard({
       )}
     >
       <div className="flex items-start gap-3">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent">
-          <span className="text-lg">💡</span>
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent">
+          <span className="text-xl">💡</span>
         </div>
         <div className="flex-1">
-          <p className="text-body-sm text-muted-foreground">Smart Tip</p>
+          <p className="text-body-sm font-medium text-primary">Here's a thought</p>
           <p className="mt-1 text-body text-foreground">{tip}</p>
           {onClick && (
             <button className="mt-2 flex items-center gap-1 text-body-sm font-medium text-primary hover:text-primary-dark transition-colors">

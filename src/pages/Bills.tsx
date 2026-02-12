@@ -76,7 +76,7 @@ export default function Bills() {
         <div className="rounded-xl bg-card p-5 shadow-card mb-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-body-sm text-muted-foreground">Total Due This Month</p>
+              <p className="text-body-sm text-muted-foreground">Bills covered this month</p>
               <p className="text-number-lg text-foreground money-display mt-1">
                 ${totalDue.toLocaleString()}
               </p>

@@ -46,7 +46,7 @@ function GoalCard({ goal }: { goal: SavingsGoal }) {
             <ProgressBar value={goal.current} max={goal.target} />
           </div>
           <p className="mt-2 text-caption text-muted-foreground">
-            ${remaining.toLocaleString()} to go
+            ${remaining.toLocaleString()} to go — you're {Math.round((goal.current / goal.target) * 100)}% there!
           </p>
         </div>
       </div>
@@ -120,10 +120,10 @@ export default function Savings() {
             </div>
             <div>
               <p className="text-body-sm font-medium text-secondary-foreground">
-                You can reach your Emergency Fund goal 2 months faster!
+                You're closer than you think! 🎯
               </p>
               <p className="mt-1 text-caption text-secondary-foreground/70">
-                Save an extra $50/paycheck to hit your target by March.
+                Adding just $50 per paycheck gets your Emergency Fund done by March. You've got this!
               </p>
             </div>
           </div>

@@ -32,18 +32,21 @@ export function ScoreCard({
       )}
     >
       <div className="flex items-center justify-between">
-        <p className="text-body-sm text-muted-foreground">Your BalanceIQ Score</p>
+        <p className="text-body-sm text-muted-foreground">Your Financial Health</p>
         {onClick && (
           <button className="flex h-6 w-6 items-center justify-center rounded-full text-muted-foreground hover:bg-muted transition-colors">
             <HelpCircle className="h-4 w-4" />
           </button>
         )}
       </div>
-      <div className="mt-2 flex items-baseline gap-1">
+      <div className="mt-2 flex items-baseline gap-2">
         <span className={cn("text-number-lg money-display", getScoreColor(score))}>
           {score}
         </span>
-        <span className="text-body-sm text-muted-foreground">/{maxScore}</span>
+        <span className="text-body-sm text-muted-foreground">/ {maxScore}</span>
+        <span className={cn("ml-auto text-body-sm font-medium", getScoreColor(score))}>
+          {score >= 80 ? "Looking great! 🎉" : score >= 60 ? "Getting there! 💪" : score >= 40 ? "Room to grow 🌱" : "Let's work on this 💛"}
+        </span>
       </div>
       <div className="mt-3">
         <ProgressBar value={score} max={maxScore} />

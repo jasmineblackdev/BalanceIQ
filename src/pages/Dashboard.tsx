@@ -82,8 +82,8 @@ export default function Dashboard() {
 
           {/* Smart Tip */}
           <SmartTipCard
-            tip="You could save $120/month by cutting your unused streaming subscriptions."
-            action="See suggestion"
+            tip="We noticed you have 3 streaming subscriptions. Cutting the ones you don't use could save you $120/month — that's $1,440 a year! 🎯"
+            action="Show me how"
             onClick={() => navigate("/advisor")}
           />
         </div>
